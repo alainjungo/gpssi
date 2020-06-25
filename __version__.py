@@ -1,0 +1,8 @@
+__title__ = 'gpssi'
+__description__ = 'Sampling image segmentations with Gaussian process'
+__url__ = 'https://github.com/alainjungo/gpssi/'
+__version__ = '0.1.0'
+__author__ = 'Alain Jungo'
+__author_email__ = 'alain.jungo@artorg.unibe.ch'
+__license__ = 'Apache 2.0'
+__copyright__ = '2020 gpssi python package authors'
