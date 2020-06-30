@@ -13,7 +13,7 @@ Be aware that there might be difference to the original implementation.
 ### Geodesic map
 
 To produce the geodesic maps, this project relies on the _GeodisTK_ packages. This package can be installed via pip or via 
-source code. This project's _setup.py_ installs _GeodisTK_ from source since installation problems were encountered when 
+source code ([https://github.com/taigw/GeodisTK](https://github.com/taigw/GeodisTK)). This project's _setup.py_ installs _GeodisTK_ from source since installation problems were encountered when 
 using pip.  
 
 

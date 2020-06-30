@@ -1,5 +1,4 @@
 import numpy as np
-import scipy.ndimage.morphology as morphology
 import GeodisTK as geo
 
 import gpssi.covariance as c
