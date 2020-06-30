@@ -19,10 +19,6 @@ with open('requirements.txt', 'r', encoding='utf-8') as f:
 
 TEST_PACKAGES = []
 
-REQUIRED_GIT_LINKS = [
-        'GeodisTK @ git+ssh://git@github.com/taigw/GeodisTK.git#egg=GeodisTK-0.0'
-]
-
 setup(
     name=about['__title__'],
     version=about['__version__'],
@@ -35,7 +31,7 @@ setup(
     license=about['__license__'],
     python_requires='>=3.6',
     packages=find_packages(exclude=['examples']),
-    install_requires=REQUIRED_PACKAGES + REQUIRED_GIT_LINKS,
+    install_requires=REQUIRED_PACKAGES,
     tests_require=REQUIRED_PACKAGES + TEST_PACKAGES,
     classifiers=[
         'Development Status :: 3 - Alpha',
