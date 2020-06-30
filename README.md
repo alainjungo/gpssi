@@ -12,17 +12,10 @@ Be aware that there might be difference to the original implementation.
 
 ### Geodesic map
 
-To produce the geodesic maps, this project relies on the _GeodisTK_ packages. This package can be installed via pip.
+To produce the geodesic maps, this project relies on the _GeodisTK_ packages. This package can be installed via pip or via 
+source code. This project's _setup.py_ installs _GeodisTK_ from source since installation problems were encountered when 
+using pip.  
 
-`pip install GeodisTK`
- 
-However, you might need to clone and setup it manually when the pip installation fails or the execution 
-doesn't behave as desired.
-
-```
-git clone https://github.com/taigw/GeodisTK
-pip install -e <path_to_GeodisTK>
-``` 
 
 ### Factorization via Kronecker
 The authors use a Kronecker matrix representation of the covariance matrix to overcome the issue of large covariance matrices.
@@ -33,11 +26,18 @@ This project implements the kronecker matrix-vector product based on following r
  
 
 ## Installation
-You can install the required package by
+This projects is available as python package and can be installed by 
 
-`pip install -r requirements.txt`
+```pip install gpssi```
 
-The _GeodisTK_ package is not listed in the requirements file. You will need to install it manually.
+Otherwise, the package can also from the source code via 
+
+```
+git clone https://github.com/alainjungo/gpssi.git
+cd gpssi
+pip install .
+```
+
 
 ## Usage
 See [gpssi_example.py](examples/gpssi_example.py) for an example usage.
