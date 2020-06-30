@@ -6,17 +6,11 @@ import gpssi.covariance as c
 import gpssi.kernel as k
 
 
-def get_geodesic_map(np_img, np_seg, lmbda, iter=2, return_boarder=False):
+def get_geodesic_map(np_img, np_seg, lmbda, iter=2):
     mask = np_seg.astype(np.bool)
 
-    conn = morphology.generate_binary_structure(mask.ndim, 1)
-    np_boarder = mask ^ morphology.binary_erosion(mask, conn)
-
-    np_geo = geo.geodesic2d_raster_scan(np_img, np_boarder, lmbda, iter)
-    np_geo[mask] = -np_geo[mask]
-
-    if return_boarder:
-        return np_geo, np_boarder
+    np_geo = geo.geodesic2d_raster_scan(np_img, mask, lmbda, iter)
+    np_geo[mask] = -geo.geodesic2d_raster_scan(np_img, ~mask, lmbda, iter)[mask]
     return np_geo
 
 
