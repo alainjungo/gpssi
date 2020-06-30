@@ -42,7 +42,7 @@ The _GeodisTK_ package is not installed automatically and has to be installed ma
 We propose to use the direct installation via source code: 
 
 ```
-pip install git+ssh://git@github.com/taigw/GeodisTK.git
+pip install git+https://github.com/taigw/GeodisTK.git
 ```
 
 Alternatively, you can try installing it from pypi (`pip install GeodisTK`)
