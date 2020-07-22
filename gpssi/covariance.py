@@ -4,7 +4,7 @@ import scipy.linalg as linalg
 
 class CovarianceRepresentation:
 
-    def factorize_grid(self, shape: tuple):
+    def factorize_grid(self, shape: tuple, kernel):
         raise NotImplementedError()
 
     def sample(self, noise_vec):
@@ -13,13 +13,12 @@ class CovarianceRepresentation:
 
 class KroneckerCovariance(CovarianceRepresentation):
 
-    def __init__(self, kernel) -> None:
+    def __init__(self, cov_kron_mats=None) -> None:
         super().__init__()
-        self.kernel = kernel
-        self.cov_kron_mats = None
+        self.cov_kron_mats = cov_kron_mats
 
-    def factorize_grid(self, shape: tuple):
-        self.cov_kron_mats = kronecker_grid_factorization(shape, self.kernel)
+    def factorize_grid(self, shape: tuple, kernel):
+        self.cov_kron_mats = kronecker_grid_factorization(shape, kernel)
 
     def sample(self, noise_vec):
         return kronecker_matrix_vector_product(self.cov_kron_mats, noise_vec)
@@ -27,13 +26,12 @@ class KroneckerCovariance(CovarianceRepresentation):
 
 class FullCovariance(CovarianceRepresentation):
 
-    def __init__(self, kernel) -> None:
+    def __init__(self, cov=None) -> None:
         super().__init__()
-        self.kernel = kernel
-        self.cov = None
+        self.cov = cov
 
-    def factorize_grid(self, shape: tuple):
-        self.cov = full_grid_factorization(shape, self.kernel)
+    def factorize_grid(self, shape: tuple, kernel):
+        self.cov = full_grid_factorization(shape, kernel)
 
     def sample(self, noise_vec):
         return self.cov @ noise_vec

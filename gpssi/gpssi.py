@@ -15,13 +15,13 @@ def get_geodesic_map(np_img, np_seg, lmbda, iter=2):
 
 def get_covariance(img_shape: tuple, kernel: k.Kernel, cov_repr: str = 'kron') -> c.CovarianceRepresentation:
     if cov_repr == 'kron':
-        cov = c.KroneckerCovariance(kernel)
+        cov = c.KroneckerCovariance()
     elif cov_repr == 'full':
-        cov = c.FullCovariance(kernel)
+        cov = c.FullCovariance()
     else:
         raise ValueError(f'unknown covariance representation "{cov_repr}"')
 
-    cov.factorize_grid(img_shape)
+    cov.factorize_grid(img_shape, kernel)
     return cov
 
 
