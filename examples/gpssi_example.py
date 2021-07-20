@@ -10,9 +10,10 @@ def main():
     np_img, np_seg = np_img[110:180, 100:180], np_seg[110:180, 100:180]
 
     np_geo = gpssi.get_geodesic_map(np_img, np_seg, lmbda=0.9, iter=2)
+    np_geo[np_img == 0] = np_geo.max()  # set background dist to max
 
-    # w1 = np.sqrt((np_seg > 0).sum() / np.pi)  # r of circle with equal area than the segmentation
-    w1 = np.sqrt((np_seg > 0).sum() / np.pi)
+    # r of circle with equal area than the segmentation
+    w1 = np.sqrt((np_seg > 0).sum() / np.pi)  # radius r=(A/pi)^(1/2)
     w0 = 5   # or (D/2)**2, where D s the expected distance in np_geo for the 95% CI
     kernel = gpssi.RbfKernel(w0, w1, eps=1e-8)
 
